@@ -32,8 +32,8 @@ namespace Castle_Climb_Game.States
             _graphicsDevice = device;
             _content = content;
         }
-        
 
+        public abstract void LoadContent();
         public abstract void Update(GameTime gameTime);
         public abstract void PostUpdate(GameTime gameTime);
 

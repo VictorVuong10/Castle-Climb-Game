@@ -14,6 +14,9 @@ namespace Castle_Climb_Game
         private State _previousState;
         private State _nextState;
 
+        public static int ScreenWidth = 1920;
+        public static int ScreenHeight = 1080;
+
         public void ChangeState(State state)
         {
             _nextState = state;
@@ -25,10 +28,15 @@ namespace Castle_Climb_Game
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
         }
 
         protected override void Initialize()
         {
+            _graphics.PreferredBackBufferWidth = ScreenWidth;
+            _graphics.PreferredBackBufferHeight = ScreenHeight;
+            _graphics.ApplyChanges();
+
             IsMouseVisible = true;
 
             base.Initialize();

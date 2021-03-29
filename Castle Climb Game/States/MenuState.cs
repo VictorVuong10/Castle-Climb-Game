@@ -15,39 +15,7 @@ namespace Castle_Climb_Game.States
 
         public MenuState(Game1 game, GraphicsDevice device, ContentManager content) : base(game, device, content)
         {
-            var buttonTexture = _content.Load<Texture2D>("Controls/Button");
-            var buttonFont = _content.Load<SpriteFont>("Fonts/Font");
-
-            var newGameButton = new Button(buttonTexture, buttonFont)
-            {
-                Position = new Vector2(300, 100),
-                Text = "New Game",
-            };
-
-            newGameButton.Click += NewGameButton_Click;
-
-            var loadGameButton = new Button(buttonTexture, buttonFont)
-            {
-                Position = new Vector2(300, 200),
-                Text = "Load Game",
-            };
-
-            loadGameButton.Click += LoadGameButton_Click;
-
-            var quitGameButton = new Button(buttonTexture, buttonFont)
-            {
-                Position = new Vector2(300, 300),
-                Text = "Quit",
-            };
-
-            quitGameButton.Click += QuitGameButton_Click;
-
-            _components = new List<Component>()
-            {
-                newGameButton,
-                loadGameButton,
-                quitGameButton,
-            };
+            LoadContent();
         }
         private void NewGameButton_Click(object sender, EventArgs e)
         {
@@ -87,6 +55,45 @@ namespace Castle_Climb_Game.States
             }
 
             PostUpdate(gameTime);
+        }
+
+        public override void LoadContent()
+        {
+
+            var buttonTexture = _content.Load<Texture2D>("Controls/Button");
+            var buttonFont = _content.Load<SpriteFont>("Fonts/Font");
+
+            var newGameButton = new Button(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(300, 100),
+                Text = "New Game",
+            };
+
+            newGameButton.Click += NewGameButton_Click;
+
+            var loadGameButton = new Button(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(300, 200),
+                Text = "Load Game",
+            };
+
+            loadGameButton.Click += LoadGameButton_Click;
+
+            var quitGameButton = new Button(buttonTexture, buttonFont)
+            {
+                Position = new Vector2(300, 300),
+                Text = "Quit",
+            };
+
+            quitGameButton.Click += QuitGameButton_Click;
+
+            _components = new List<Component>()
+            {
+                newGameButton,
+                loadGameButton,
+                quitGameButton,
+            };
+
         }
     }
 }
